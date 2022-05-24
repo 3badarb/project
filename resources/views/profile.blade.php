@@ -197,7 +197,7 @@
                                                         btn-hover w-100
                                                         rounded"><i class="uil
                                                             uil-eye"></i>
-                                                        Show Appliers</button>
+                                                        My Jobs</button>
                                                 </form>
                                             </div>
                                         </div>

@@ -286,6 +286,9 @@
 
                         <!--end container-->
                     </section>
+                    <div class="col-lg-8 offset-md-4  mb-4">
+                        {{$jobs->links()}}
+                    </div>
                     <!-- END CANDIDATE-GRID -->
 
                     <!-- START HIRE-NOW MODAL -->

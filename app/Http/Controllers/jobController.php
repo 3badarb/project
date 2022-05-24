@@ -23,7 +23,7 @@ class jobController extends Controller
     }
     public function showapplier(job $job){
 
-        $candidates=$job->users;
+        $candidates=$job->users()->paginate(10);
         return view('/candidate-list',['users'=>$candidates]);
 
 

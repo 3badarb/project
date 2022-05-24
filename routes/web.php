@@ -48,7 +48,7 @@ use App\Http\Controllers\SignController;
         Route::get('/candidate-details/{User}',function (\App\Models\User $User){
             return view('/candidate-details',['user'=>$User,
             'info'=>$User->userinfo]);});
-        Route::get('/show-my-jobs/{User}',)
+        Route::get('/show-my-jobs/{User}',[\App\Http\Controllers\userController::class,'showjobs']);
 
 
 
