@@ -1,0 +1,99 @@
+.navbar .navbar-nav .nav-link {
+  border-radius: 1em;
+  padding: 1em;
+}
+.navbar .navbar-nav .nav-link:hover {
+  /* background-color: #a5d6f3; */
+  border-radius: 1em;
+  padding: 1em;
+  color: #0275d8;
+}
+.navbar .navbar-nav .nav-item {
+  padding-left: 1.5em;
+}
+.p {
+  margin-top: 0;
+  text-align: center;
+  padding-top: 12%;
+}
+.p1 {
+  text-align: center;
+  margin-top: 1%;
+}
+/* .form-control:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25); 
+}*/
+.div {
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 0;
+}
+.nv {
+  margin-left: 25%;
+}
+/* .nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #28a745;
+}
+.nav-pills .nav-link,
+.nav-pills .show > .nav-link {
+  color: #28a745;
+} */
+.btn-primary {
+  background-color: #0275d8;
+}
+.btn-primary:hover {
+  background-color: #0c67b8;
+}
+.btn-outline-success:hover {
+  background-color: #0275d8;
+}
+.btn-outline-primary {
+  background-color: white;
+  border-color: #0275d8;
+}
+
+.dd {
+  margin-top: 10%;
+}
+.d {
+  margin-left: 10em;
+}
+.d1 {
+  margin-left: 5em;
+}
+
+.t {
+  margin-left: auto;
+}
+.h:hover {
+  fill: #0275d8;
+  cursor: pointer;
+}
+.link-secondary {
+  color: white;
+}
+.link-secondary:hover {
+  color: gainsboro;
+}
+.m {
+  margin-top: 2.3em;
+}
+.mm {
+  margin-left: 4em;
+}
+.mmm {
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+}
+.mmm:hover {
+  background-color: aliceblue;
+  cursor: pointer;
+}
+.left {
+  margin-left: 5em;
+  padding-left: 7em;
+}
