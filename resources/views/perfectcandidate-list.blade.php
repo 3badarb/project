@@ -125,7 +125,7 @@
                                                         class="flex-shrink-0
                                                         position-relative">
                                                         <img
-                                                            src="{{asset("storage/".$user->userinfo->avatar)}}"
+                                                            src="{{asset("storage/".$user->avatar)}}"
                                                             alt=""
                                                             class="avatar-md
                                                             rounded">
@@ -133,10 +133,10 @@
                                                     </div>
                                                     <div class="ms-3">
                                                         <a
-                                                            href="/candidate-details/{{$user->id}}"
+                                                            href="/candidate-details/{{$user->user->id}}"
                                                             class="primary-link">
                                                             <h5
-                                                                class="fs-17">{{$user->name}}</h5>
+                                                                class="fs-17">{{$user->user->name}}</h5>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -148,7 +148,7 @@
 
                                                 <div class="mt-3">
                                                     <a
-                                                        href="/candidate-details/{{$user->id}}"
+                                                        href="/candidate-details/{{$user->user->id}}"
                                                         class="btn
                                                         btn-soft-primary
                                                         btn-hover w-100
@@ -172,7 +172,7 @@
                                                         class="flex-shrink-0
                                                         position-relative">
                                                         <img
-                                                            src="{{asset("storage/".$user->userinfo->avatar)}}"
+                                                            src="{{asset("storage/".$user->avatar)}}"
                                                             alt=""
                                                             class="avatar-md
                                                             rounded">
@@ -186,10 +186,10 @@
                                                     </div>
                                                     <div class="ms-3">
                                                         <a
-                                                            href="/candidate-details/{{$user->id}}"
+                                                            href="/candidate-details/{{$user->user->id}}"
                                                             class="primary-link">
                                                             <h5
-                                                                class="fs-17">{{$user->name}}</h5>
+                                                                class="fs-17">{{$user->user->name}}</h5>
                                                         </a>
 
                                                     </div>
@@ -203,7 +203,7 @@
                                                 <div class="mt-3">
 
                                                     <a
-                                                        href="/candidate-details/{{$user->id}}"
+                                                        href="/candidate-details/{{$user->user->id}}"
                                                         class="btn
                                                         btn-soft-primary
                                                         btn-hover w-100
@@ -230,7 +230,7 @@
                                                         class="flex-shrink-0
                                                         position-relative">
                                                         <img
-                                                            src="{{asset("storage/".$user->userinfo->avatar)}}"
+                                                            src="{{asset("storage/".$user->avatar)}}"
                                                             alt=""
                                                             class="avatar-md
                                                             rounded">
@@ -238,10 +238,10 @@
                                                     </div>
                                                     <div class="ms-3">
                                                         <a
-                                                            href="/candidate-details/{{$user->id}}"
+                                                            href="/candidate-details/{{$user->user->id}}"
                                                             class="primary-link">
                                                             <h5
-                                                                class="fs-17">{{$user->name}}</h5>
+                                                                class="fs-17">{{$user->user->name}}</h5>
                                                         </a>
 
                                                     </div>
@@ -255,7 +255,7 @@
 
                                                 <div class="mt-3">
                                                     <a
-                                                        href="/candidate-details/{{$user->id}}"
+                                                        href="/candidate-details/{{$user->user->id}}"
                                                         class="btn
                                                         btn-soft-primary
                                                         btn-hover w-100

@@ -108,7 +108,7 @@
                                                 <div class="col-lg-2">
                                                     <a
                                                         href="/company-details/{{$job->myuser->id}}"><img
-                                                            src="{{asset("./assets/images/featured-job/img-10.png")}}"
+                                                            src="{{asset("storage/".$job->myuser->companyinfo->avatar)}}"
                                                             alt=""
                                                             class="img-fluid
                                                             rounded-0"></a>
@@ -132,7 +132,7 @@
                                                                     mb-0">{{$job->myuser->name}}</p>
                                                             </li>
                                                             <li
-                                                                class="">
+                                                                class="list-inline-item ">
                                                                 <p
                                                                     class="text-muted
                                                                     fs-14
@@ -141,6 +141,22 @@
                                                                         uil-map-marker"></i>
                                                                     {{$job->myuser->companyinfo->location}}</p>
                                                             </li>
+                                                            <li class="list-inline-item ">
+                                                                <div class="d-flex
+                                                                            mb-0">
+
+                                                                    <i
+                                                                        class="uil
+                                                                        uil-clock-three
+                                                                        text-primary
+                                                                        me-1"></i>
+
+                                                                    <p
+                                                                        class="text-muted
+                                                                    mb-0"> {{$job->created_at->diffForHumans()}}</p>
+                                                                </div>
+                                                            </li>
+
                                                             <li
                                                                 class="">
                                                                 <p
@@ -224,7 +240,7 @@
                                                         <div class="col-lg-2">
                                                             <a
                                                                 href="/company-details/{{$job->myuser->id}}"><img
-                                                                    src="{{asset("./assets/images/featured-job/img-10.png")}}"
+                                                                    src="{{asset("storage/".$job->myuser->companyinfo->avatar)}}"
                                                                     alt=""
                                                                     class="img-fluid
                                                             rounded-0"></a>
@@ -248,7 +264,7 @@
                                                                     mb-0">{{$job->myuser->name}}</p>
                                                                     </li>
                                                                     <li
-                                                                        class="">
+                                                                        class="list-inline-item ">
                                                                         <p
                                                                             class="text-muted
                                                                     fs-14
@@ -257,6 +273,22 @@
                                                                         uil-map-marker"></i>
                                                                             {{$job->myuser->companyinfo->location}}</p>
                                                                     </li>
+                                                                    <li class="list-inline-item">
+                                                                        <div class="d-flex
+                                                                            mb-0">
+
+                                                                                <i
+                                                                                    class="uil
+                                                                        uil-clock-three
+                                                                        text-primary
+                                                                        me-1"></i>
+
+                                                                            <p
+                                                                                class="text-muted
+                                                                    mb-0"> {{$job->created_at->diffForHumans()}}</p>
+                                                                        </div>
+                                                                    </li>
+
                                                                     <li
                                                                         class="">
                                                                         <p

@@ -102,20 +102,13 @@
                                                  alt=""
                                                 src={{asset("./assets/images/job-detail.jpg")}}
                                                 >
-                                            <div
-                                                class="job-details-compnay-profile">
-                                                <img class="img-fluid
-                                                rounded-3 rounded-3"
-                                                     alt=""
-                                                    src={{asset("./assets/images/featured-job/img-10.png")}}
-                                                     >
-                                            </div>
+
                                         </div>
                                         <div class="card-body p-4">
                                             <div>
                                                 <div class="row">
 
-                                                        <h5 class="mb-1">{{$job->jobtitle}}</h5>
+                                                        <h4 class="mb-1">{{$job->jobtitle}}</h4>
 
                                                 </div>
                                                 <!--end row-->
@@ -292,6 +285,21 @@
                                                         rounded"><i class="uil
                                                             uil-eye"></i>
                                                             Show Appliers</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="card-body p-4">
+                                                <div>
+                                                    <form method="get" action="/the-perfects/{{$job->id}}">
+                                                        @csrf
+
+                                                        <button
+                                                            class="btn
+                                                        btn-primary
+                                                        btn-hover w-100
+                                                        rounded"><i class="uil
+                                                            uil-eye"></i>
+                                                            The PERFECT ones for you</button>
                                                     </form>
                                                 </div>
                                             </div>

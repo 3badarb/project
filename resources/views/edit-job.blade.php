@@ -103,7 +103,7 @@
                                     <div
                                         class="job-details-compnay-profile">
                                         <img
-                                            src="{{asset("./assets/images/featured-job/img-10.png")}}"
+                                            src="{{asset("storage/".$job->myuser->companyinfo->avatar)}}"
                                             class="img-fluid rounded-3 rounded-3">
                                     </div>
                                 </div>

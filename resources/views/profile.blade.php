@@ -118,8 +118,9 @@
                                         <div class="card-body p-4">
                                             <div class="text-center pb-4
                                                 border-bottom">
+
                                                 <img
-                                                    src="./assets/images/profile.jpg"
+                                                    src="{{asset("storage/".$info->avatar)}}"
                                                     alt="" class="avatar-lg
                                                     img-thumbnail rounded-circle
                                                     mb-4" />
@@ -202,6 +203,22 @@
                                             </div>
                                         </div>
                                         <!--end card-body-->
+                                        <div class="card-body p-4">
+                                            <div>
+                                                <form method="get" action="/show-matching-jobs">
+                                                    @csrf
+
+                                                    <button
+                                                        class="btn
+                                                        btn-primary
+                                                        btn-hover w-100
+                                                        rounded"><i class="uil
+                                                            uil-eye"></i>
+                                                        Jobs mtach you</button>
+                                                </form>
+                                            </div>
+                                        </div>
+
                                     </div>
                                     <!--end profile-sidebar-->
                                 </div>
@@ -253,7 +270,7 @@
                                                 <button class="nav-link"
                                                     id="settings-tab"
                                                     data-bs-toggle="pill"
-                                                    data-bs-target="#cv"
+                                                    data-bs-target="#rating"
                                                     type="button" role="tab"
                                                     aria-controls="settings"
                                                     aria-selected="false">
@@ -308,44 +325,7 @@
                                                     <form method="POST" action="/change-password">
                                                         @csrf
                                                         @method('PUT')
-                                                        <div>
-                                                            <h5 class="fs-17
-                                                                fw-semibold mb-3
-                                                                mb-0">My Account</h5>
-                                                            <div
-                                                                class="text-center">
-                                                                <div class="mb-4
-                                                                    profile-user">
-                                                                    <img
-                                                                        src="./assets/images/user/img-02.jpg"
-                                                                        class="rounded-circle
-                                                                        img-thumbnail
-                                                                        profile-img"
-                                                                        id="profile-img"
-                                                                        alt="">
-                                                                    <div
-                                                                        class="p-0
-                                                                        rounded-circle
-                                                                        profile-photo-edit">
-                                                                        <input
-                                                                            id="profile-img-file-input"
-                                                                            type="file"
-                                                                            class="profile-img-file-input"
-                                                                            onchange="previewImg()">
-                                                                        <label
-                                                                            for="profile-img-file-input"
-                                                                            class="profile-photo-edit
-                                                                            avatar-xs">
-                                                                            <i
-                                                                                class="uil
-                                                                                uil-edit"></i>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
 
-                                                            <!--end row-->
-                                                        </div>
                                                         <!--end account-->
 
                                                         <div class="mt-4">
@@ -435,9 +415,68 @@
                                                     id="cv"
                                                     role="tabpanel"
                                                     aria-labelledby="settings-tab">
-                                                    <form method="post" action="/update">
+                                                    <form method="post" action="/update" enctype="multipart/form-data">
                                                         @csrf
                                                         @method('PUT')
+                                                        <div>
+                                                            <h5 class="fs-17
+                                                                fw-semibold mb-3
+                                                                mb-0">My Account</h5>
+                                                            @if($errors->any())
+                                                                @foreach($errors->all() as $error)
+
+                                                                    <p>
+                                                                        <small style="color: red">
+
+                                                                            {{$error}}
+
+                                                                        </small>
+
+                                                                    </p>
+                                                                @endforeach
+                                                            @endif
+                                                            <div
+                                                                class="text-center">
+                                                                <div class="mb-4
+                                                                    profile-user">
+                                                                    <img
+                                                                        src="{{asset("storage/".$info->avatar)}}"
+                                                                        class="rounded-circle
+                                                                        img-thumbnail
+                                                                        profile-img"
+                                                                        id="profile-img"
+                                                                        alt="">
+                                                                    <div
+                                                                        class="p-0
+                                                                        rounded-circle
+                                                                        profile-photo-edit">
+                                                                        <input
+                                                                            id="profile-img-file-input"
+                                                                            name="avatar"
+                                                                            type="file"
+                                                                            class="profile-img-file-input"
+                                                                            onchange="loadFile(event)"
+                                                                        >
+                                                                        <label
+                                                                            for="profile-img-file-input"
+                                                                            class="profile-photo-edit
+                                                                            avatar-xs">
+                                                                            <i
+                                                                                class="uil
+                                                                                uil-edit"></i>
+                                                                        </label>
+                                                                        <script>
+                                                                            var loadFile = function(event) {
+                                                                                var image = document.getElementById('profile-img');
+                                                                                image.src = URL.createObjectURL(event.target.files[0]);
+                                                                            };
+                                                                        </script>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!--end row-->
+                                                        </div>
                                                         <div class="mt-2">
                                                             <h5 class="fs-17
                                                                 fw-semibold
@@ -652,26 +691,34 @@
                                                             <button class="btn btn-primary" type="submit">Save</button>
 
                                                         </div>
-                                                        @if($errors->any())
-                                                            @foreach($errors->all() as $error)
 
-                                                                <p>
-                                                                    <small style="color: red">
-
-                                                                        {{$error}}
-
-                                                                    </small>
-
-                                                                </p>
-                                                            @endforeach
-                                                        @endif
                                                     </form>
                                                     <!--end form-->
                                                 </div>
+                                                <div class="tab-pane fade"
+                                                     id="rating"
+                                                     role="tabpanel"
+                                                     aria-labelledby="settings-tab">
+                                                    <div
+                                                        class="candidate-education-details
+                                                        mt-4">
+                                                        <h6 class="fs-18 fw-bold
+                                                            mb-0">Depending on our AI the best job title match your CV is:</h6>
+                                                        <p class="mb-2 mt-4 m-lg-4 fw-bold fs-16
+                                                        text-muted">{{$info->jobtitle}}</p>
+                                                        <h7 class="
+                                                            mb-0 m-lg-5">*NOTE: if you want to change it change from the Your CV tab.*</h7>
+
+                                                    </div>
+
+
+                                                </div>
+
                                             </div>
                                             <!--end tab-content-->
                                         </div>
                                         <!--end card-body-->
+
                                     </div>
                                     <!--end profile-content-page-->
                                 </div>

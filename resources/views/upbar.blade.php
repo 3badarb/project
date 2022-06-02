@@ -1,6 +1,6 @@
 
 <nav class="navbar navbar-expand-lg fixed-top sticky" id="navbar">
-    <div class="container-fluid custom-container">
+    <div class="container-fluid custom-container" >
         <a class="navbar-brand text-dark fw-bold me-auto"
            href="/index">
             <img src="{{asset("./assets/images/logo-dark.png")}}" height="22"
@@ -76,7 +76,7 @@
                 </li>
                 <!--end dropdown-->
                 <li class="nav-item dropdown dropdown-hover">
-                    <a class="nav-link" href="#How"
+                    <a class="nav-link" href="/index#How"
                        id="productdropdown" role="button"
 
                        aria-expanded="false">
@@ -101,11 +101,19 @@
                 <li class="list-inline-item dropdown">
                     <a href="javascript:void(0)" class="header-item"
                        id="userdropdown" data-bs-toggle="dropdown">
-                        <!--<img src="./assets/images/profile.jpg" alt="mdo"
-                            width="35" height="35" class="rounded-circle
-                            me-1"> -->
-                        <span class="d-none d-md-inline-block
-                                    fw-medium">Hi, {{auth()->user()->name}}</span>
+                        @if(auth()->user()->tag==='U')
+                            <img src="{{asset("storage/".auth()->user()->userinfo->avatar)}}"
+                                 width="40" height="40" class="rounded-circle
+                            me-1"
+                            alt="">
+                        @elseif(auth()->user()->tag==='C')
+                            <img src="{{asset("storage/".auth()->user()->companyinfo->avatar)}}"
+                                 width="40" height="40" class="rounded-circle
+                            me-1" alt="">
+                        @endif
+
+                        <span class="d-none d-md-inline-block fw-bold
+                                   ">Hi, {{auth()->user()->name}}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end"
                         aria-labelledby="userdropdown">

@@ -42,7 +42,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
- public  function userinfo(){
+
+
+    public  function userinfo(){
 
      return $this->hasOne(userinfo::class);
  }
@@ -58,7 +60,7 @@ public function companyinfo(){
 
     public function jobs(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-     return $this->belongsToMany(job::class);
+     return $this->belongsToMany(job::class)->withTimestamps();
     }
 
 }

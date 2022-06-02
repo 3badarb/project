@@ -145,12 +145,22 @@
                                                             <h5 class="fs-17
                                                                 fw-semibold mb-3
                                                                 mb-0">My Account</h5>
+                                                            @if($errors->any())
+                                                                @foreach($errors->all() as $error)
+
+                                                                    <p>
+                                                                        <small style="color: red">
+                                                                            {{$error}}
+                                                                        </small>
+                                                                    </p>
+                                                                @endforeach
+                                                            @endif
                                                             <div
                                                                 class="text-center">
                                                                 <div class="mb-4
                                                                     profile-user">
                                                                     <img
-                                                                        src="./assets/images/user/img-02.jpg"
+                                                                        src="./assets/images/user/Untitled-1.jpg"
                                                                         class="rounded-circle
                                                                         img-thumbnail
                                                                         profile-img"
@@ -162,9 +172,10 @@
                                                                         profile-photo-edit">
                                                                         <input
                                                                             id="profile-img-file-input"
+                                                                            name="avatar"
                                                                             type="file"
                                                                             class="profile-img-file-input"
-                                                                            onchange="previewImg()">
+                                                                            onchange="loadFile(event)">
                                                                         <label
                                                                             for="profile-img-file-input"
                                                                             class="profile-photo-edit
@@ -173,6 +184,12 @@
                                                                                 class="uil
                                                                                 uil-edit"></i>
                                                                         </label>
+                                                                        <script>
+                                                                            var loadFile = function(event) {
+                                                                                var image = document.getElementById('profile-img');
+                                                                                image.src = URL.createObjectURL(event.target.files[0]);
+                                                                            };
+                                                                        </script>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -264,16 +281,7 @@
                                                                 Save
                                                             </button>
                                                         </div>
-                                                        @if($errors->any())
-                                                            @foreach($errors->all() as $error)
 
-                                                                <p>
-                                                                    <small style="color: red">
-                                                                            {{$error}}
-                                                                    </small>
-                                                                </p>
-                                                            @endforeach
-                                                        @endif
                                                     </form>
                                                     <!--end form-->
                                                 </div>
@@ -298,125 +306,10 @@
 
 
                 <!-- START FOOTER -->
-                <section class="bg-footer" id="contact">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="footer-item mt-4 mt-lg-0
-                                    me-lg-5">
-                                    <h4 class="text-white mb-4">Jobcy</h4>
-                                    <p class="text-white-50">It is a long
-                                        established fact that a reader will
-                                        be
-                                        of a page reader will be of at its
-                                        layout.</p>
-                                    <p class="text-white mt-3">Follow Us on:</p>
-                                    <ul class="footer-social-menu
-                                        list-inline
-                                        mb-0">
-                                        <li class="list-inline-item"><a
-                                                href="#"><i class="uil
-                                                    uil-facebook-f"></i></a></li>
-                                        <li class="list-inline-item"><a
-                                                href="#"><i class="uil
-                                                    uil-linkedin-alt"></i></a></li>
-                                        <li class="list-inline-item"><a
-                                                href="#"><i class="uil
-                                                    uil-google"></i></a></li>
-                                        <li class="list-inline-item"><a
-                                                href="#"><i class="uil
-                                                    uil-twitter"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!--end col-->
-                            <div class="col-lg-2 col-6">
-                                <div class="footer-item mt-4 mt-lg-0">
-                                    <p class="fs-16 text-white mb-4">Who we
-                                        are</p>
-                                    <ul class="list-unstyled footer-list
-                                        mb-0">
-                                        <li><a href="about.html"><i
-                                                    class="uil
-                                                    uil-angle-right-b"></i>
-                                                About Us</a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <!--end col-->
-                            <div class="col-lg-2 col-6">
-                                <div class="footer-item mt-4 mt-lg-0">
-                                    <p class="fs-16 text-white mb-4">For
-                                        Jobs</p>
-                                    <ul class="list-unstyled footer-list
-                                        mb-0">
-                                        <li><a href="job-categories.html"><i
-                                                    class="uil
-                                                    uil-angle-right-b"></i>
-                                                Browser Categories</a></li>
-                                        <li><a href="./job-list.html"><i
-                                                    class="uil
-                                                    uil-angle-right-b"></i>
-                                                Browser Jobs</a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <!--end col-->
-                            <div class="col-lg-2 col-6">
-                                <div class="footer-item mt-4 mt-lg-0">
-                                    <p class="text-white fs-16 mb-4">For
-                                        Candidates</p>
-                                    <ul class="list-unstyled footer-list
-                                        mb-0">
-                                        <li><a href="./candidate-list.html"><i
-                                                    class="uil
-                                                    uil-angle-right-b"></i>
-                                                Candidate List</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!--end col-->
-                            <div class="col-lg-2 col-6">
-                                <div class="footer-item mt-4 mt-lg-0">
-                                    <p class="fs-16 text-white mb-4">For
-                                        Companies</p>
-                                    <ul class="list-unstyled footer-list
-                                        mb-0">
-                                        <li><a href="company-list.html"><i
-                                                    class="uil
-                                                    uil-angle-right-b"></i>
-                                                Companies list
-                                            </a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            <!--end col-->
-                        </div>
-                        <!--end row-->
-                    </div>
-                    <!--end container-->
-                </section>
+                @include("downbar")
                 <!-- END FOOTER -->
 
                 <!-- START FOOTER-ALT -->
-                <div class="footer-alt">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <p class="text-white-50 text-center mb-0">
-                                    <script>
-                                    document.write(new Date().getFullYear())
-                                </script>
-                                    &copy; Jobcy - All Rights Reserved
-                                </p>
-                            </div>
-                            <!--end col-->
-                        </div>
-                        <!--end row-->
-                    </div>
                     <!--end container-->
                 </div>
 
@@ -433,21 +326,21 @@
         <!-- END layout-wrapper -->
 
         <!-- JAVASCRIPT -->
-        <script src="./assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script
+            src={{asset("./assets/libs/bootstrap/js/bootstrap.bundle.min.js")}}></script>
         <script
             src="https://unicons.iconscout.com/release/v4.0.0/script/monochrome/bundle.js"></script>
         <!-- Choice Js -->
         <script
-            src="./assets/libs/choices.js/public/./assets/scripts/choices.min.js"></script>
+            src={{asset("./assets/libs/choices.js/public/./assets/scripts/choices.min.js")}}></script>
         <!-- Job-list Init Js -->
-        <script src="./assets/js/pages/job-list.init.js"></script>
+        <script src={{asset("./assets/js/pages/job-list.init.js")}}></script>
 
         <!-- Switcher Js -->
-        <script src="./assets/js/pages/switcher.init.js"></script>
+        <script src={{asset("./assets/js/pages/switcher.init.js")}}></script>
 
         <!-- App Js -->
-        <script src="./assets/js/app.js"></script>
-
+        <script src={{asset("public/assets/js/app.js")}}></script>
     </body>
 
 </html>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\companyinfo;
+use App\Models\userinfo;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\job;
@@ -17,8 +19,7 @@ class jobController extends Controller
     public function search(){
 
         $job=job::with(['myuser','myuser.companyinfo'])->latest()->filter()->paginate(10);
-
-        return view('/job-list',['jobs'=>$job]);
+        return view('/search-result',['jobs'=>$job]);
 
     }
     public function showapplier(job $job){
@@ -30,11 +31,23 @@ class jobController extends Controller
 
 
     }
+    public function theperfects(job $job){
+
+        $u=userinfo::with('user')->latest()->where('jobtitle','like','%'.$job->jobtitle.'%')->paginate(10);
+
+
+
+        return view('/perfectcandidate-list',['users'=>$u]);
+
+
+
+    }
+
+
 
     public function apply($id){
 
         if( !$this->checkapply($id)){
-
             auth()->user()->jobs()->attach($id);
 
             return back();

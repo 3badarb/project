@@ -49,8 +49,9 @@ use App\Http\Controllers\SignController;
             return view('/candidate-details',['user'=>$User,
             'info'=>$User->userinfo]);});
         Route::get('/show-my-jobs/{User}',[\App\Http\Controllers\userController::class,'showjobs']);
-
-
+        Route::get('/the-perfects/{job}',[\App\Http\Controllers\jobController::class,'theperfects']);
+        Route::get('/show-matching-jobs',[\App\Http\Controllers\userController::class,'perfectjobs']);
+        Route::delete('/delete-apply/{job}',[\App\Http\Controllers\userController::class,'deleteapply']);
 
 
 //});
@@ -88,18 +89,14 @@ use App\Http\Controllers\SignController;
 
     Route::get('/test',function (){
         try {
-            $response=Http::timeout(2)->post('http://192.168.43.175:3000/userClass',[
-                'yoe'=>'0',
-                'cv'=>"my name obada",
-                'job title'=>'javadeveloper'
-            ]);
+            $response=Http::post('http://192.168.43.156:3000/userClass' );
+
         }
         catch (\Illuminate\Http\Client\ConnectionException $e){
             dd('failed');
         }
 
-
-        return $response;
+        return $response['resume'];
 
     });
 

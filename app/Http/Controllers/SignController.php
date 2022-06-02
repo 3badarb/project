@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\job;
 
+use Faker\Core\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\ValidationException;
@@ -24,7 +25,7 @@ class SignController extends Controller
 
             $user = User::create($attributes);
             auth()->login($user);
-            return view('/continue-user');
+            return redirect('/continue-user');
 
     }
 
@@ -50,25 +51,33 @@ class SignController extends Controller
         $infos=$this->getValidateuser();
 
             try {
-                $response=Http::timeout(2)->post('http://192.168.43.175:3000/userClass',[
-                    'yoe'=>$infos['education'].$infos['expirence'].$infos['skills']
+                $response=Http::post('http://192.168.43.156:3000/userClass',[
+                    'resume'=>$infos['education'].$infos['expirence'].$infos['skills']
                 ]);
 
-                $infos['jobtitle']=$response['jobtitle'];
+                $infos['jobtitle']=$response['resume'];
             }
             catch (\Illuminate\Http\Client\ConnectionException $e){
 
             }
 
-        auth()->user()->userinfo()->create($infos);
+            if(request('avatar') !== null)
+                $infos['avatar']=\request()->file('avatar')->store('avatar');
+
+        auth()->user()->userinfo()->updateOrCreate($infos);
 
         return redirect('/profile');
         }
         elseif (auth()->user()->tag === 'C'){
+
             $infos=$this->getValidatecompany();
 
-            auth()->user()->companyinfo()->create($infos);
 
+
+            if(request('avatar') !== null)
+                $infos['avatar']=\request()->file('avatar')->store('avatar');
+
+            auth()->user()->companyinfo()->updateOrCreate($infos);
            // return redirect(/*##  the next page  ##*/);
             return redirect('/profileCompany');
         }
@@ -96,16 +105,26 @@ class SignController extends Controller
 
         if(auth()->user()->tag === 'U'){
 
+
             $infos=$this->getValidateuser();
 
-            auth()->user()->userinfo()->update($infos);
 
+            if(request('avatar') !== null) {
+                \Illuminate\Support\Facades\File::delete("storage/".auth()->user()->userinfo->avatar);
+                $infos['avatar'] = \request()->file('avatar')->store('avatar');
+            }
+
+            auth()->user()->userinfo()->update($infos);
             return back();
         }
         elseif (auth()->user()->tag === 'C'){
 
             $infos=$this->getValidatecompany();
 
+            if(request('avatar') !== null) {
+                \Illuminate\Support\Facades\File::delete("storage/" . auth()->user()->companyinfo->avatar);
+                $infos['avatar'] = \request()->file('avatar')->store('avatar');
+            }
 
             auth()->user()->companyinfo()->update($infos);
 
@@ -177,7 +196,8 @@ public function getValidateuser(){
         'resident'=>'required',
         'from'=>'required',
         'birth'=>'required|date',
-        'phone'=>'required|numeric'
+        'phone'=>'required|numeric',
+            'avatar'=>'image'
     ]))+['user_id'=>auth()->id()
     ];
 
@@ -190,8 +210,9 @@ public function getValidatecompany()
                 'location'=>'required',
                 'telephone'=>'required|numeric',
                 'website'=>'required',
+                'avatar'=>'image'
 
-            ]))+['user_id'=>auth()->id(),'jobtitle'=>''];
+            ]))+['user_id'=>auth()->id()];
 
 }
 
@@ -201,7 +222,7 @@ public function getValidatejob(){
             'requirement'=>'required',
             'jobtitle'=>'required',
             'expirence'=>'required',
-            'salary'=>'required',
+            'salary'=>'required'
 
         ]))+['user_id'=>auth()->id()];
 

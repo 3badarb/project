@@ -57,7 +57,7 @@
 
 
             <!--Navbar Start-->
-            @include('upbar')
+
 
 
             <div class="main-content">
@@ -128,7 +128,7 @@
                                         <div class="card-body p-4">
                                             <div class="tab-content"
                                                 id="pills-tabContent">
-
+                                                <form method="post" action="/store-info" enctype="multipart/form-data">
                                                 <div class="tab-pane fade show
                                                     active"
                                                     id="settings"
@@ -139,26 +139,42 @@
                                                             <h5 class="fs-17
                                                                 fw-semibold mb-3
                                                                 mb-0">My Account</h5>
+                                                            @if($errors->any())
+                                                                @foreach($errors->all() as $error)
+
+                                                                    <p>
+                                                                        <small style="color: red">
+
+                                                                            {{$error}}
+
+                                                                        </small>
+
+                                                                    </p>
+                                                                @endforeach
+                                                            @endif
                                                             <div
                                                                 class="text-center">
                                                                 <div class="mb-4
                                                                     profile-user">
                                                                     <img
-                                                                        src="./assets/images/user/img-02.jpg"
+                                                                        src="./assets/images/user/Untitled-1.jpg"
                                                                         class="rounded-circle
                                                                         img-thumbnail
                                                                         profile-img"
                                                                         id="profile-img"
-                                                                        alt="">
+                                                                        alt=""
+                                                                        >
                                                                     <div
                                                                         class="p-0
                                                                         rounded-circle
                                                                         profile-photo-edit">
                                                                         <input
                                                                             id="profile-img-file-input"
+                                                                            name="avatar"
                                                                             type="file"
                                                                             class="profile-img-file-input"
-                                                                            onchange="previewImg()">
+                                                                            onchange="loadFile(event)"
+                                                                             >
                                                                         <label
                                                                             for="profile-img-file-input"
                                                                             class="profile-photo-edit
@@ -167,6 +183,12 @@
                                                                                 class="uil
                                                                                 uil-edit"></i>
                                                                         </label>
+                                                                        <script>
+                                                                            var loadFile = function(event) {
+                                                                                var image = document.getElementById('profile-img');
+                                                                                image.src = URL.createObjectURL(event.target.files[0]);
+                                                                            };
+                                                                        </script>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -177,7 +199,7 @@
                                                             <!--end row-->
                                                         </div>
                                                         <!--end account-->
-                                                    <form method="post" action="/store-info">
+
                                                         @csrf
                                                         <div class="mt-2">
                                                             <h5 class="fs-17
@@ -395,19 +417,7 @@
                                                             <button class="btn btn-primary" type="submit">Save</button>
 
                                                         </div>
-                                                        @if($errors->any())
-                                                            @foreach($errors->all() as $error)
-
-                                                                <p>
-                                                                    <small style="color: red">
-
-                                                                            {{$error}}
-
-                                                                    </small>
-
-                                                                </p>
-                                                            @endforeach
-                                                        @endif
+                                                </div>
                                                     </form>
                                                     <!--end form-->
                                                 </div>
@@ -421,7 +431,8 @@
                                 <!--end col-->
                             </div>
                             <!--end row-->
-                        </div>
+
+
                         <!--end container-->
                     </section>
                     <!-- END PROFILE -->

@@ -103,7 +103,7 @@
                                             <div class="candidate-profile
                                                 text-center">
                                                 <img
-                                                    src={{asset("./assets/images/featured-job/img-10.png")}}
+                                                    src="{{asset("storage/".$user->companyinfo->avatar)}}"
                                                     alt="" class="avatar-lg
                                                     rounded-circle">
                                                 <h6 class="fs-18 mb-1 mt-4">{{$user->name}}</h6>

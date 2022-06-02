@@ -12,21 +12,22 @@
         <meta content="Themesdesign" name="author" />
 
         <!-- App favicon -->
-        <link rel="shortcut icon" href="./assets/images/favicon.ico">
+        <link rel="shortcut icon" href={{asset("./assets/images/favicon.ico")}}>
 
         <!-- Bootstrap Css -->
-        <link href="./assets/css/bootstrap.min.css" id="bootstrap-style"
-            rel="stylesheet" type="text/css" />
+        <link href={{asset("./assets/css/bootstrap.min.css")}} id="bootstrap-style"
+              rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
-        <link href="./assets/css/icons.min.css" rel="stylesheet" type="text/css"
-            />
+        <link href={{asset("./assets/css/icons.min.css")}} rel="stylesheet"
+              type="text/css"
+        />
         <!-- App Css-->
-        <link href="./assets/css/app.min.css" id="app-style" rel="stylesheet"
-            type="text/css" />
+        <link href={{asset("./assets/css/app.min.css")}} id="app-style" rel="stylesheet"
+              type="text/css" />
         <!--Custom Css-->
-        <link href="./custom.css" rel="stylesheet" />
+        <link href={{asset("./custom.css")}} rel="stylesheet" />
         <link rel="stylesheet"
-            href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+              href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
     </head>
 
     <body>
@@ -62,7 +63,7 @@
                                         <div class="row g-0">
                                             <div class="col-lg-6 text-center">
                                                 <div class="card-body p-4">
-                                                    <a href="index.blade.php">
+                                                    <a href="/index">
                                                         <img
                                                             src="./assets/images/logo-light.png"
                                                             alt=""
@@ -94,8 +95,33 @@
                                                                 in to continue
                                                                 to Jobcy.</p>
                                                         </div>
+                                                        @if($errors->any())
+                                                            <div class="text-center
+                                                            mb-4">
+                                                            @foreach($errors->all() as $error)
+
+                                                                <p>
+
+
+                                                                            @if($error === "You don't have account with this email")
+                                                                        <small style="color: rgba(67,11,11,0.93)">
+                                                                                You don't have account with this email
+                                                                         </small>
+                                                                            @break
+                                                                        @else
+                                                                        <small style="color: rgba(67,11,11,0.93)">
+                                                                            {{$error}}
+                                                                        </small>
+                                                                        @endif
+
+
+                                                                </p>
+                                                            @endforeach
+                                                            </div>
+                                                        @endif
+
                                                         <form method="post"
-                                                            action="log-in"
+                                                            action="/log-in"
                                                             class="auth-form">
                                                             @csrf
                                                             <div class="mb-3">

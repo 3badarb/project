@@ -96,19 +96,14 @@
                                             <img class="img-fluid img-custom" alt=""
                                                 src={{asset("./assets/images/job-detail.jpg")}}
                                                     >
-                                            <div
-                                                class="job-details-compnay-profile">
-                                                <img class="img-fluid rounded-3 rounded-3" alt=""
-                                                    src={{asset("./assets/images/featured-job/img-10.png")}}
-                                                       >
-                                            </div>
+
                                         </div>
                                         <div class="card-body p-4">
                                             <div>
                                                 <div class="row">
                                                     <div class="row">
 
-                                                        <h5 class="mb-1">{{$job->jobtitle}}</h5>
+                                                        <h3 class="mb-1">{{$job->jobtitle}}</h3>
 
                                                     </div>
                                                     <!--end col-->
@@ -316,7 +311,7 @@
                                                 <div
                                                     class="text-center">
                                                     <img class="img-fluid rounded-3 rounded-3" alt=""
-                                                         src={{asset("./assets/images/featured-job/img-10.png")}}
+                                                         src="{{asset("storage/".$job->myuser->companyinfo->avatar)}}"
                                                     >
 
                                                     <div class="mt-4">
@@ -327,48 +322,6 @@
                                                 </div>
                                                 <ul class="list-unstyled
                                                     mt-4">
-                                                    <li>
-                                                        <div
-                                                            class="d-flex">
-                                                            <i
-                                                                class="uil
-                                                                uil-phone-volume
-                                                                text-primary
-                                                                fs-4"></i>
-                                                            <div
-                                                                class="ms-3">
-                                                                <h6
-                                                                    class="fs-14
-                                                                    mb-2">Phone</h6>
-                                                                <p
-                                                                    class="text-muted
-                                                                    fs-14
-                                                                    mb-0">{{$job->myuser->companyinfo->telephone}}</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-
-                                                    <li class="mt-3">
-                                                        <div
-                                                            class="d-flex">
-                                                            <i
-                                                                class="uil
-                                                                uil-globe
-                                                                text-primary
-                                                                fs-4"></i>
-                                                            <div
-                                                                class="ms-3">
-                                                                <h6
-                                                                    class="fs-14
-                                                                    mb-2">Website</h6>
-                                                                <p
-                                                                    class="text-muted
-                                                                    fs-14
-                                                                    text-break
-                                                                    mb-0">{{$job->myuser->companyinfo->website}}</p>
-                                                            </div>
-                                                        </div>
-                                                    </li>
                                                     <li class="mt-3">
                                                         <div
                                                             class="d-flex">

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('about_us');
             $table->string('telephone');
             $table->string('website');
+            $table->string('avatar')->default('avatar/Untitled-1.jpg');
             $table->rememberToken();
             $table->timestamps();
         });

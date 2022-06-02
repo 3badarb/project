@@ -22,11 +22,12 @@ return new class extends Migration
             $table->text('education');
             $table->text('skills');
             $table->text('expirence');
-            $table->string('jobtitle')->nullable();
+            $table->string('jobtitle')->default("");
             $table->date('birth');
             $table->string('resident');
             $table->string('from');
             $table->string('phone');
+            $table->string('avatar')->default('avatar/Untitled-1.jpg');
             $table->rememberToken();
             $table->timestamps();
 

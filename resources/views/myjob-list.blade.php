@@ -97,7 +97,7 @@
 
                         <div class="container">
 
-                            <div class="row ">
+                            <div class="row">
                                 @forelse($jobs as $job)
                                 @if($loop->index%2===0)
                                 <div class="col-lg-6 ">
@@ -108,7 +108,7 @@
                                                 <div class="col-lg-2">
                                                     <a
                                                         href="/company-details/{{$job->myuser->id}}"><img
-                                                            src="{{asset("./assets/images/featured-job/img-10.png")}}"
+                                                            src="{{asset("storage/".$job->myuser->companyinfo->avatar)}}"
                                                             alt=""
                                                             class="img-fluid
                                                             rounded-0"></a>
@@ -130,6 +130,21 @@
                                                                     class="text-muted
                                                                     fs-14
                                                                     mb-0">{{$job->myuser->name}}</p>
+                                                            </li>
+                                                            <li class="list-inline-item">
+                                                                <div class="d-flex
+                                                                            mb-0">
+
+                                                                    <i
+                                                                        class="uil
+                                                                        uil-clock-three
+                                                                        text-primary
+                                                                        me-1"></i>
+
+                                                                    <p
+                                                                        class="text-muted
+                                                                    mb-0"> {{\Carbon\Carbon::parse($job->getOriginal()['pivot_created_at'])->diffForHumans()}} you have applied</p>
+                                                                </div>
                                                             </li>
                                                             <li
                                                                 class="">
@@ -196,9 +211,19 @@
                                                 </div>
                                                 <!--end col-->
                                                 <!--end col-->
-                                                <div class="col-md-4">
+                                                <div class="px-3">
+                                                    <div class="col-md-4">
+                                                        <div>
+                                                            <form method="post" action="/delete-apply/{{$job->id}}" class="primary-link">
+                                                                @method('delete')
+                                                                <button
+                                                                    class="btn-1">Delete<i
+                                                                        class="uil
+                                                                uil-angle-double-right"></i></button></form>
+                                                        </div>
+                                                    </div>
                                                     <div
-                                                        class="text-md-end">
+                                                        class="d-inline text-md-center  ">
                                                         <a href="/job-details/{{$job->id}}"
                                                             class="primary-link">Explore<i
                                                                 class="uil
@@ -224,7 +249,7 @@
                                                         <div class="col-lg-2">
                                                             <a
                                                                 href="/company-details/{{$job->myuser->id}}"><img
-                                                                    src="{{asset("./assets/images/featured-job/img-10.png")}}"
+                                                                    src="{{asset("storage/".$job->myuser->companyinfo->avatar)}}"
                                                                     alt=""
                                                                     class="img-fluid
                                                             rounded-0"></a>
@@ -246,6 +271,21 @@
                                                                             class="text-muted
                                                                     fs-14
                                                                     mb-0">{{$job->myuser->name}}</p>
+                                                                    </li>
+                                                                    <li class="list-inline-item">
+                                                                        <div class="d-flex
+                                                                            mb-0">
+
+                                                                            <i
+                                                                                class="uil
+                                                                        uil-clock-three
+                                                                        text-primary
+                                                                        me-1"></i>
+
+                                                                            <p
+                                                                                class="text-muted
+                                                                    mb-0"> {{\Carbon\Carbon::parse($job->getOriginal('pivot_created_at'))->diffForHumans()}} you have applied</p>
+                                                                        </div>
                                                                     </li>
                                                                     <li
                                                                         class="">
@@ -312,9 +352,19 @@
                                                         </div>
                                                         <!--end col-->
                                                         <!--end col-->
-                                                        <div class="col-md-4">
+                                                        <div class="px-3">
+                                                            <div class="col-md-4">
+                                                                <div>
+                                                                    <form method="post" action="/delete-apply/{{$job->id}}" class="primary-link">
+                                                                        @method('delete')
+                                                                        <button
+                                                                            class="btn-1">Delete<i
+                                                                                class="uil
+                                                                uil-angle-double-right"></i></button></form>
+                                                                </div>
+                                                            </div>
                                                             <div
-                                                                class="text-md-end">
+                                                                class="d-inline text-md-center  ">
                                                                 <a href="/job-details/{{$job->id}}"
                                                                    class="primary-link">Explore<i
                                                                         class="uil
@@ -332,7 +382,7 @@
                                 @endif
                                 @empty
                                     <h1
-                                        class="offset-md-4 mb-0 ">No Jobs Yet.</h1>
+                                        class="">No Jobs Yet.</h1>
 
                                 @endforelse
                             </div>

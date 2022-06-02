@@ -21,5 +21,32 @@ class userController extends Controller
 
 
     }
+    public function deleteapply($id){
+
+        if( $this->checkapply($id)){
+
+            auth()->user()->jobs()->detach($id);
+
+            return back();
+        }
+        return back();
+
+
+    }
+    public function perfectjobs(){
+
+        $u=job::with('myuser')->latest()->where('jobtitle','like',auth()->user()->userinfo->jobtitle)->paginate(10);
+
+        return view('/job-list',['jobs'=>$u]);
+
+
+
+    }
+    public static function checkapply($id){
+
+
+        return auth()->user()->jobs->contains($id);
+    }
+
 
 }

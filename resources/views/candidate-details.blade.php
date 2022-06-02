@@ -104,7 +104,7 @@
                                             <div class="candidate-profile
                                                 text-center">
                                                 <img
-                                                    src={{asset("./assets/images/user/img-02.jpg")}}
+                                                    src={{asset("storage/".$user->userinfo->avatar)}}
                                                     alt="" class="avatar-lg
                                                     rounded-circle">
                                                 <h6 class="fs-18 mb-0 mt-4">{{$user->name}}</h6>

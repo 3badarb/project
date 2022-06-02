@@ -17,12 +17,16 @@ class job extends Model
     }
     public function users(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withTimestamps();
     }
+
+
     public function scopeFilter($query){
 
         $query->where('jobtitle','like','%'.request('search').'%')
-            ->orWhere('description','like','%'.request('search').'%');
+            ->orWhere('description','like','%'.request('search').'%')->
+            orWhereHas('myuser', function ($query) {
+                $query->where('name', 'like', '%'.request('search').'%');});
 
     }
 }
